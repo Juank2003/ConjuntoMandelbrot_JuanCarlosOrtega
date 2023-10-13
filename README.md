@@ -1,5 +1,5 @@
 # ConjuntoMandelbrot_JuanCarlosOrtega
-## Mi repositorio:  
+## Mi repositorio:  https://github.com/Juank2003/ConjuntoMandelbrot_JuanCarlosOrtega.git
 
 Objetivo: El propósito de esta práctica es mejorar la eficiencia y el rendimiento del programa de cálculo del conjunto de Mandelbrot utilizando la concurrencia y los ejecutores de Java.
 Implementarás una función que divide el cálculo del conjunto entre múltiples procesos, permitiendo una renderización más rápida y eficiente.
