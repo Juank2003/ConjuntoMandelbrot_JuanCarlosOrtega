@@ -1,19 +1,38 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Conjunto de Mandelbrot");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+            // Crear un panel de tamaño fijo (800x800)
+            JPanel panel = new JPanel();
+            JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 32, 1));
+            panel.add(spinner);
+            JButton calcularButton = new JButton("Calcular");
+            panel.add(calcularButton);
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+            // Crear una instancia de Usuario y pasar el panel
+            Usuario usuario = new Usuario(panel);
+
+            calcularButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int numWorkers = (int) spinner.getValue();
+                    // Llamar al método de Usuario para calcular el Mandelbrot
+                    usuario.calcularMandelbrot(numWorkers);
+                }
+            });
+
+            frame.add(panel);
+            frame.pack();
+            frame.setVisible(true);
+        });
     }
 }
